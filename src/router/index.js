@@ -7,6 +7,9 @@ import CreateAcc from "@/views/CreateAcc.vue";
 import Deposit from "@/views/Deposit";
 import Withdraw from "@/views/Withdraw";
 import Transfer from "@/views/Transfer";
+import GetClients from "@/views/GetClients";
+import GetAccounts from "@/views/GetAccounts";
+import History from "@/views/History";
 
 Vue.use(VueRouter)
 
@@ -55,6 +58,21 @@ const routes = [
     path: '/transfer',
     name: 'Transfer',
     component: Transfer
+  },
+  {
+    path: '/clients',
+    name: 'Clients',
+    component: GetClients
+  },
+  {
+    path: '/accounts',
+    name: 'Accounts',
+    component: GetAccounts
+  },
+  {
+    path: '/history',
+    name: 'History',
+    component: History
   }
 ]
 

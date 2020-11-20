@@ -3,7 +3,7 @@
   <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Withdraw</title>
+    <title>History</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
@@ -13,20 +13,29 @@
     <section class="jumbotron text-center">
       <div align="center">
         <img width="100" src="https://png2.cleanpng.com/sh/347e69b6d4d7110f44f51091c3ca7df7/L0KzQYm3U8I5N5VriZH0aYP2gLBuTfNwdaF6jNd7LXnmf7B6TfJidpwygdV4bj3ndcTwhB4ue5R3fdd3c3jyhH7pgf5sNWZmetQ8NHPpc7O7WcgzNmk5SqY7MEKzQYa5UsIyQGIASao8MkexgLBu/kisspng-computer-icons-bank-icon-design-screenshot-bank-5abb34cfcb4982.8424202015222181918327.png"/>
-        <h1>Withdraw money</h1>
-        <div class="row justify-content-center">
-          <div class="col-md-3 mb-2">
-            <label for="account">Account</label>
-            <input v-model="acc.accountNr" type="text" class="form-control" id="account" placeholder="Input your Account" value="" required="">
-          </div>
-          <div class="col-md-3 mb-2">
-            <label for="money">Money</label>
-            <input v-model="acc.money" type="number" class="form-control" id="money" placeholder="Input amount to withdraw" value="" required="">
-          </div>
-
-        </div>
+        <h1>History</h1>
         <div class="col-md-6 text-center">
-          <button v-on:click="withdraw()" id="btn" class="btn btn-primary btn-lg btn-block" type="submit">Withdraw</button>
+          <button v-on:click="history()" id="btn" class="btn btn-primary btn-lg btn-block" type="submit">Show History</button>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#id</th>
+              <th scope="col">Account Nr</th>
+              <th scope="col">Operation</th>
+              <th scope="col">Money</th>
+              <th scope="col">To Account</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="row in result">
+              <td>{{row.id}}</td>
+              <td>{{row.fromAccountNr}}</td>
+              <td>{{row.operation}}</td>
+              <td>{{row.money}}</td>
+              <td>{{row.toAccountNr}}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -48,25 +57,30 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 
+let showResponse = function (response){
+  this.result = response.data;
+}
 
-let withdrawFunc = function() {
-  let url = "http://localhost:8080/bank/account/withdraw";
-  this.$http.put(url, this.acc)
-      .then(response => alert(response.data.message))
-      .catch(result => alert(result.response.data.message));
+
+let historyFunction = function() {
+  let url = "http://localhost:8080/bank/history";
+  this.$http.get(url, this.user)
+      .then(this.showResponse)
 }
 
 export default {
-  name: 'Withdraw',
+  name: 'Home',
   components: {
     HelloWorld
   },
   methods: {
-    withdraw: withdrawFunc
+    history: historyFunction,
+    showResponse: showResponse
   },
   data: function(){
     return{
-      acc: {}
+      user: {},
+      result: []
     }
   }
 }

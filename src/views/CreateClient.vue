@@ -51,9 +51,8 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 let createClientFunc = function() {
   let url = "http://localhost:8080/bank/client/create";
-  let requestBody = {}
   this.$http.post(url, this.client)
-      .catch(result => alert(result.response.data.message));
+      .then(response => alert(response.data.message));
 }
 
 export default {
@@ -70,4 +69,5 @@ export default {
     }
   }
 }
+
 </script>

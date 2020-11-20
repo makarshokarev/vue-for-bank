@@ -3,7 +3,7 @@
   <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Create Client</title>
+    <title>Deposit</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
   <body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
@@ -51,7 +51,8 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 let depositFunc = function() {
   let url = "http://localhost:8080/bank/account/deposit";
-  this.$http.post(url, this.acc)
+  this.$http.put(url, this.acc)
+      .then(response => alert(response.data.message))
       .catch(result => alert(result.response.data.message));
 }
 

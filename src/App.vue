@@ -3,14 +3,16 @@
   <div id="app">
     <div id="nav">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/register">Register</router-link> |
+<!--      <router-link to="/">Home</router-link> |-->
+<!--      <router-link to="/about">About</router-link> |-->
       <router-link to="/create_client">Create Client</router-link> |
       <router-link to="/create_acc">Create Account</router-link> |
       <router-link to="/deposit">Deposit</router-link> |
       <router-link to="/withdraw">Withdraw</router-link> |
-      <router-link to="/transfer">Transfer</router-link>
+      <router-link to="/transfer">Transfer</router-link> |
+      <router-link to="/clients">Clients</router-link> |
+      <router-link to="/accounts">Accounts</router-link> |
+      <router-link to="/history">History</router-link>
     </div>
     <router-view/>
   </div>
@@ -28,6 +30,8 @@
 
 #nav {
   padding: 30px;
+  font-family: "Segoe UI";
+  font-weight: bold;
 }
 
 #nav a {

@@ -49,7 +49,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 let createAccFunc = function() {
   let url = "http://localhost:8080/bank/account/create";
   this.$http.post(url, this.account)
-      // .then(response => this.result=response.data)
+      .then(response => alert(response.data.message))
       .catch(result => alert(result.response.data.message));
 }
 

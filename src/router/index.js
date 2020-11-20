@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Register from "../views/Register.vue";
+import CreateClient from "@/views/CreateClient.vue";
+import CreateAcc from "@/views/CreateAcc.vue";
+import Deposit from "@/views/Deposit";
+import Withdraw from "@/views/Withdraw";
+import Transfer from "@/views/Transfer";
 
 Vue.use(VueRouter)
 
@@ -19,6 +25,36 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  {
+    path: '/create_client',
+    name: 'Create Client',
+    component: CreateClient
+  },
+  {
+    path: '/create_acc',
+    name: 'Create Account',
+    component: CreateAcc
+  },
+  {
+    path: '/deposit',
+    name: 'Deposit',
+    component: Deposit
+  },
+  {
+    path: '/withdraw',
+    name: 'Withdraw',
+    component: Withdraw
+  },
+  {
+    path: '/transfer',
+    name: 'Transfer',
+    component: Transfer
   }
 ]
 
